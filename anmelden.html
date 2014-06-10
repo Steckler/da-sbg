@@ -1,3 +1,13 @@
+<?php
+$db = mysqli_connect("localhost", "root", "", "HTL-inno");
+if(!$db)
+{
+if (mysqli_connect_errno()) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+?>
+
+
 <!doctype html>
 <html>
 <head>
@@ -7,34 +17,36 @@
 
 <link rel="stylesheet" href="lightbox/css/lightbox.css" type="text/css" media="screen" />
 
+<div id="logo1"></div>
+<div id="logo2"></div>
+
 <meta charset="utf-8">
 <title>Anmelden</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
-<div id="rahmen">
-<div id="logo1"></div>
-<div id="logo2"></div>
-<div id="balken_oben"></div>
-<div id="menue">
+
   <ul>
     <li><a href="index.html">Home</a></li>
     <li><em>Anmelden</em></li>
-    <li><a href="Projekte.html">Projekte</a></li>
+    <li><a href="Projekte.html">Projekte</</li>
+    	  <ul> 
+    		<li> Elektronik</li>
+    		<li> Elektrotechnik</li>
+    		</ul>
+  </li>
     <li><a href="Betreuer.html">Betreuer</a></li>
   </ul>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
 </div>
 
 
-
+<body>
+<div id="rahmen">
+<div id="menue">
 
 <div id="content">
   <h1>Anmelden </h1>
 
-var Anzahl;
 <!-- tr ertsellt eine neue zeite in der TABELLE (table row) 
 	bei <th> (table header) wird es fett geschrieben
 	bei <td> (table data) wird es normal geschrieben
@@ -42,7 +54,6 @@ var Anzahl;
   <table border="0">
     <tr> <th> <NOBR>Wie viele Mitglieder befinden sich im Team?</NOBR></th><th> 
 		<select anzahl="anzahl[]" single="multiple" size="1"> 
-			<option value="1"> 1 </option>
 			<option value="2"> 2 </option>
 			<option value="3"> 3 </option>
 			<option value="4"> 4 </option>
@@ -55,6 +66,25 @@ var Anzahl;
 
   </table>
   
+  
+<script type="text/javascript"> 
+function Hinzufuegen () { 
+ NeuerEintrag = new Option("Text1"),new Option("Text2"); 
+  document.Testform.Auswahl.options[document.Testform.Auswahl.length] = NeuerEintrag; 
+
+} 
+</script> 
+
+<form name="Testform" action=""> 
+<select name="Auswahl" size="2"></select> 
+
+<select size="1" name="neu" onChange="Hinzufuegen()"> 
+<option value='1'>value1</option> 
+<option value='2'> noob</option> 
+</select></form> 
+
+
+
   </div>
 <div id="footer"></div>
 </div> <!--Ende Rahmen--> 
