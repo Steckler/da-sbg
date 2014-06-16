@@ -1,24 +1,12 @@
-<?php
-$db = mysqli_connect("localhost", "root", "", "HTL-inno");
-if(!$db)
-{
-if (mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-?>
-
-
 <!doctype html>
 <html>
 <head>
 <script type="text/javascript" src="lightbox/js/prototype.js"></script>
 <script type="text/javascript" src="lightbox/js/scriptaculous.js?load=effects,builder"></script>
 <script type="text/javascript" src="lightbox/js/lightbox.js"></script>
-
 <link rel="stylesheet" href="lightbox/css/lightbox.css" type="text/css" media="screen" />
-
-<div id="logo1"></div>
-<div id="logo2"></div>
+<div id="logo1"style="width: 900px; margin-left: auto; margin-right: auto; text-align: center;"></div>
+<div id="logo2"style="width: 900px; margin-left: auto; margin-right: auto; text-align: center;"></div>
 
 <meta charset="utf-8">
 <title>Anmelden</title>
@@ -63,33 +51,36 @@ if (mysqli_connect_errno()) {
 	<tr> <td> <p>Vorname</td> <td><input name="Vorname" type="text" size="30" maxlength="30"></p></td></tr>
 	<tr> <td> <p>Nachname</p> </td> <td> <input name="Nachname" type="text" size="30" maxlength="30"></p></td></tr>
 	<tr> <td> <p>Abteilung</p> </td> <td> <input abteilung="Abteilung" type="text" size="30" maxlength="15"> </p> </td> </tr>
+	<tr> <td> <p>Projektname</td> <td><input name="Projname" type="text" size="30" maxlength="30"></p></td></tr>
+	<tr> <td> <p>Projektbetreuer</td> <td><input name="Betreuer" type="text" size="30" maxlength="30"></p></td></tr>
+	<tr> <td> <p>Projektbeschreibung</td> <td><input name="Description" type="text" size="30" maxlength="30"></p></td></tr>
+</table>
 
-  </table>
-  
-  
-<script type="text/javascript"> 
-function Hinzufuegen () { 
- NeuerEintrag = new Option("Text1"),new Option("Text2"); 
-  document.Testform.Auswahl.options[document.Testform.Auswahl.length] = NeuerEintrag; 
-
-} 
-</script> 
-
-<form name="Testform" action=""> 
-<select name="Auswahl" size="2"></select> 
-
-<select size="1" name="neu" onChange="Hinzufuegen()"> 
-<option value='1'>value1</option> 
-<option value='2'> noob</option> 
-</select></form> 
+<?php
+$host = 'localhost';
+$user = 'steiner';
+$pass = '123456';
+$db = 'HTL-inno';
 
 
+$db = new mysqli($host, $user,$pass, $db) or die("geht ned");
+echo "passt";
+
+ $titel_ger = mysql_query('SELECT titel_ger FROM HTL-db');
+while($row = mysql_fetch_array($titel_ger)) {
+echo '<option value="' . $row['titel_ger'] . '"></option>';
+}
+
+?>
+
+echo '<select name="erg2">';
+
+echo '</select>'; 
 
   </div>
 <div id="footer"></div>
-</div> <!--Ende Rahmen--> 
-
-
+</div> 
+<!--Ende Rahmen-->
 
 </body>
 </html>
